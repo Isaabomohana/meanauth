@@ -17,8 +17,13 @@
 });
  
  mongoose.connect(config.database);
+ 
  mongoose.connection.on('connected', () => {
    console.log('Connected to Database'+ config.database);
+ });
+ 
+ mongoose.connection.on('error', (err) => {
+   console.log('Database Error: '+ err);
  });
  
  const app = express();
